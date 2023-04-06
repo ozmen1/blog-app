@@ -1,0 +1,48 @@
+﻿@using BlogApp.Entities.Dtos
+@model CategoryAddDto
+
+<div class="modal fade" role="dialog" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><span class="fas fa-plus"></span> Kategori Ekle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form asp-area="Admin" asp-controller="Category" asp-action="Add" id="form-category-add" method="post">
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                    <div class="text-danger" asp-validation-summary="All" id="validation-summary" style="display:none"></div>@*Tüm hataları listelemek için*@
+                    <div class="form-group">
+                        <label asp-for="Name" class="form-check-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="form-check-label"></label>
+                        <input asp-for="Description" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Description"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Note" class="form-check-label"></label>
+                        <input asp-for="Note" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Note"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" asp-for="IsActive" />
+                        <label asp-for="IsActive" class="form-check-label"></label>
+                        <span class="text-danger" asp-validation-for="IsActive"></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"><span class="fas fa-times"></span> İptal</button>
+                <button type="button" class="btn btn-primary btn-block" id="btnSave"><span class="fas fa-save"></span> Kaydet</button>
+            </div>
+
+
+        </div>
+    </div>
+</div>
